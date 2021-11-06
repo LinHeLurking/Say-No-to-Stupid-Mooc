@@ -2,7 +2,7 @@
 // @name         Fuck the stupid mooc
 // @namespace    http://tampermonkey.net/
 // @version      0.2
-// @description  国科大慕课学习，鼠标离开界面不会暂停，且不用在视频中答题
+// @description  国科大慕课学习，鼠标离开界面不会暂停，且不用在视频中答题，还会自动翻页刷下一章，遇到小测会卡住
 // @author       LinHe
 // @require      https://cdn.bootcdn.net/ajax/libs/jquery/3.4.0/jquery.min.js
 // @match        http://mooc1.ecourse.ucas.ac.cn/mycourse/*
