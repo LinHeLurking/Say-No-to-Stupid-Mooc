@@ -19,16 +19,18 @@
         if (playButton) {
             playButton.click();
         }
+
     };
 
 
     $("document").ready(function () {
         console.log("Waiting for loading...");
+        // alert("Script running. If it does not work, it is perhaps because Chrome diables autoplay of videos. If you do not know how to solve it, I recommend you switch to Firefox and enables autoplay in the setting.");
         setTimeout(async function () {
             const mainFrame = $("iframe");
             if (mainFrame) {
                 while (true) {
-                    const isQuiz = $("#mainid > h1", mainFrame).text().toLowerCase().includes("quiz");
+                    const isQuiz = $("#mainid > h1").text().toLowerCase().includes("quiz");
                     if (!isQuiz) {
 
                         const frames = $("iframe").contents().find("iframe").contents();
@@ -37,8 +39,7 @@
                             const docs = frames.slice(1);
                             $(".vjs-big-play-button", video).click();
                             window.setInterval(replayVideo, 200);
-                            const play2x = $("li.vjs-menu-item",video)[0];
-                            play2x.click();
+
                             for (let index = 0; index < docs.length; index++) {
                                 const doc = docs[index];
                                 const mask = $("#maskLayer", doc);
@@ -50,6 +51,11 @@
 
                         // wait until video finishes.
                         while (true) {
+                            let play2x = $("li.vjs-menu-item",$("iframe").contents().find("iframe").contents()[0])[0];
+                            if (!play2x.classList.contains("vjs-selected")) {
+                              console.log("click 2x");
+                              play2x.click();
+                            }
                             console.log("Checking if it's finished.");
                             var flag = true;
                             const icons = $(".ans-attach-ct", $("iframe").contents());
@@ -68,13 +74,14 @@
                     }
                     // click next-button
                     console.log("Next chapter");
-                    $(".orientationright").click();
-                    await new Promise(r => setTimeout(r, 3000));
+                    WAY.box.show();
+                    $(".bluebtn02")[0].click();
+                    await new Promise(r => setTimeout(r, 4000));
                 }
             } else {
                 console.log("ERROR: cannot find main frame from left");
             }
-        }, 3000);
+        }, 4000);
     });
 
 })();
