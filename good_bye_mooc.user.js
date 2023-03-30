@@ -37,6 +37,8 @@
                             const docs = frames.slice(1);
                             $(".vjs-big-play-button", video).click();
                             window.setInterval(replayVideo, 200);
+                            const play2x = $("li.vjs-menu-item",video)[0];
+                            play2x.click();
                             for (let index = 0; index < docs.length; index++) {
                                 const doc = docs[index];
                                 const mask = $("#maskLayer", doc);
@@ -51,7 +53,7 @@
                             console.log("Checking if it's finished.");
                             var flag = true;
                             const icons = $(".ans-attach-ct", $("iframe").contents());
-                            console.log(icons);
+                            // console.log(icons);
                             for (let index = 0; index < icons.length; index++) {
                                 const icon = icons[index];
                                 flag = flag && icon.className.includes("finished");
